@@ -33,13 +33,13 @@ th, td {
 .pane-hScroll {
   overflow: auto;
   width: 100%;
-  background: green;
+  /*background: green;*/
 }
 .pane-vScroll {
   overflow-y: auto;
   overflow-x: hidden;
   height: 500px;
-  background: red;
+  /*background: red;*/
 }
 
 /**/
@@ -179,6 +179,20 @@ th, td {
                           <div class="pane-hScroll">
 
                             <table>
+                                <div class="row " style="background-color: #fff;">
+                               
+                                    <div class="col-sm-12">
+                                        <div class="row pull-right">
+                                            
+                                            <div class="col-md-12">
+                                            <input type="text" name="" class="form-control" id="search" placeholder="Search..." >
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <br>
+                                        </div>
+                                    </div>
+                            </div
                               <thead>
                                 <th class="headcol" style="width: 261px !important;">Team</th>
                                 <th class="headcol" style="width: 261px !important;">Category</th>
@@ -222,7 +236,7 @@ th, td {
                             </table>
 
                             <div class="pane-vScroll">
-                              <table>
+                              <table id="table" name="table">
                                 <thead>
                                 <?php 
                                             $con = 0;
@@ -725,7 +739,7 @@ $('.hidden_total').each(function(){
 hidden_total=parseInt(hidden_total)+parseInt($(this).val());
 });
 $('#final_total').html(addCommas(hidden_total));
-
+s
 }
 
 $('.qty_assign').each(function(){
@@ -741,4 +755,15 @@ function change_qty(product_code,tp) {
     final_total();
 
 }
+</script>
+<script>
+var $rows = $('#table tr');
+$('#search').keyup(function() {
+    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+    
+    $rows.show().filter(function() {
+        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+        return !~text.indexOf(val);
+    }).hide();
+});
 </script>
