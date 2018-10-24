@@ -427,6 +427,11 @@ if (isset($column)) {
                                                     }
                                                     $remaning = $nres - $total_order;
                                                     $remaning_total = $remaning * $products_detail['tp_product'];
+
+
+                                                    if ($remaning < 1) {
+                                                       $remaning = 0;
+                                                    }
                                                     echo '<td class="long"><span href="#" data-toggle="tooltip" title="'.$products_detail['product_name'].'">'.$remaning.'</span></td><td class="long"><span href="#" data-toggle="tooltip" title="'.$products_detail['product_name'].'">'.$products_detail['current_sale'].'</span></td><td class="long"><span href="#" data-toggle="tooltip" title="'.$products_detail['product_name'].'">'.$products_detail['curent_closing'].'</span></td><td class="long"><span href="#" data-toggle="tooltip" title="'.$products_detail['product_name'].'">'.$intransit.'</span></td><td class="long"><span href="#" data-toggle="tooltip" title="'.$products_detail['product_name'].'">'.$pending.'</span></td>';
                                                 }
                                             ?>
