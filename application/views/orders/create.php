@@ -73,7 +73,7 @@ th, td {
                 <i class="pe-7s-box1"></i>
             </div>
             <div class="header-title">
-                <h1>View Product</h1>
+                <h1>View Product <small> <a href="<?php echo base_url()?>orders/add"><i class="fa fa-arrow-circle-left" title="Back To Order" style="font-size:24px"></i>Back To Order</a></small></h1> 
 
                 <ol class="breadcrumb">
                     <li><a href="<?php echo base_url() ?>"><i class="pe-7s-home"></i> Home</a></li>
@@ -171,7 +171,7 @@ th, td {
                         </div>
                     </div>
 
-                    <form action="<?php echo base_url(); ?>orders/submit_data_order" method="post">
+                    <form action="<?php echo base_url(); ?>orders/submit_data_order" id="submit-form" method="post">
                     <div class="panel-body">
                         <!-- <p>Both tables use 'table-layout: fixed' to address column sizes. Example 2 does not truncate text as desired.
                         <h3>Example 1: Two-Table Structure</h3> -->
@@ -623,6 +623,24 @@ if (isset($column)) {
 </div>
 <!-- /#wrapper -->
 <!-- START CORE PLUGINS -->
+<script type="text/javascript">
+    $( "#submit-form" ).submit(function(e) {
+        var form = this;
+        e.preventDefault();
+        swal({
+            title: "Are you sure?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, Update it!",
+            closeOnConfirm: false
+        },
+        function() {
+        form.submit();
+        });
+    });
+</script>
 <style type="text/css">
     .navbar {
         position: relative;
