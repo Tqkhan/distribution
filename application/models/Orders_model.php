@@ -3,30 +3,7 @@
 class Orders_model extends MY_Model
 {
 	
-	/*public function order_index($id=null)
-	{
-		$this->db->select('closing, packcode, distribution_code')
-				 ->from('sales')
-				 ->order_by('id', 'desc')
-				 ->limit(1);
-		$c = $this->db->get_compiled_select();
-		$this->db->select('sales.packcode, SUM(sales.sales) AS sale, MONTH(sales.date) AS MONTH, sales.closing, DATE_FORMAT(sales.date, "%Y-%m-01") AS DATE, sales.distribution_code')
-				 ->from('sales')
-				 ->group_by('MONTH(sales.date)');
-		$s = $this->db->get_compiled_select();
-		$this->db->select('o.*, d.scm_name,d.scm_code, c.closing, p.product_name, p.product_code, p.scm_product_code, SUM( o.order_field + o.order_field2 + o.order_field3) AS total, GROUP_CONCAT(s.sale SEPARATOR ",") AS sale, GROUP_CONCAT(s.month SEPARATOR ",") AS MONTH')
-				 ->from('orders o')
-				 ->join('product p', 'p.product_code = o.pak_code')
-				 ->join('distribution d', 'd.dsr_code = o.distribution_code')
-				 ->join('('.$c.')  c', 'c.packcode = p.product_code AND c.distribution_code = o.distribution_code', 'left')
-				 ->join('('.$s.')  s', 's.packcode = p.product_code AND s.distribution_code = o.distribution_code AND s.date >=( DATE_FORMAT(o.date, "%Y-%m-01") - INTERVAL 3 MONTH ) AND s.date <=( DATE_FORMAT(o.date, "%Y-%m-%e") - INTERVAL 1 MONTH )', 'left')
-				 ->group_by('o.id');
-		if ($id!=null) {
-			$this->db->where('o.user_id', $id);
-		}
-		return $this->db->get()->result_array();
-	}*/
-
+	
 	public function index_data($scm_code,$first_date,$last_date,$last_start,$start,$end,$user_id=null)
 	{
 		$this->db->select('group_concat(closing separator ",") as closing, packcode')
@@ -101,7 +78,7 @@ class Orders_model extends MY_Model
 				 ->join('('.$c.') c', 'c.packcode = product.product_code', 'left')
 				 ->join('('.$cc.') cc', 'cc.packcode = product.product_code', 'left')
 				 //->where('i.sent >=', '0')
-				 ->order_by('product.product_name')
+				 ->order_by('product.team','ASC')
 				 ->group_by('product.id');
 		if ($user_id!=null) {
 			$this->db->where('sales.user_id', $user_id);

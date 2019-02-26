@@ -20,7 +20,8 @@
         <!-- START PAGE LABEL PLUGINS -->
         <link href="<?php echo base_url() ?>admin_assets/assets/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
         <link href="<?php echo base_url() ?>admin_assets/assets/plugins/fullcalendar/fullcalendar.print.min.css" rel="stylesheet" media='print' type="text/css"/>
-        <link href="<?php echo base_url() ?>admin_assets/assets/plugins/datatables/dataTables.min.css" rel="stylesheet" type="text/css"/>
+        <!-- STYLE IISUE ARHA THA FIXED TIME JBHE COMMET KERA -->
+        <!-- <link href="<?php echo base_url() ?>admin_assets/assets/plugins/datatables/dataTables.min.css" rel="stylesheet" type="text/css"/> -->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.dataTables.min.css">
 
         <!-- START THEME LAYOUT STYLE -->
